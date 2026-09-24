@@ -1,0 +1,154 @@
+/* ─────────────────────────────────────────────────────────
+   Design tokens. The single place to change the brand.
+   Consumed by CSS Modules via var(--token).
+   ───────────────────────────────────────────────────────── */
+:root {
+  /* Brand */
+  --color-accent: #7c5cff;
+  --color-accent-600: #6a49f2;
+
+  /* Neutrals (dark-first) */
+  --color-bg: #0b0b0f;
+  --color-surface: #14141b;
+  --color-border: #26262f;
+  --color-text: #f4f4f6;
+  --color-text-muted: #a0a0ab;
+
+  /* Feedback */
+  --color-success: #3ecf8e;
+  --color-danger: #ff5c66;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Fluid type scale */
+  --fs-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.82rem);
+  --fs-sm: clamp(0.875rem, 0.83rem + 0.2vw, 0.95rem);
+  --fs-base: clamp(1rem, 0.95rem + 0.25vw, 1.075rem);
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-xl: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  --fs-2xl: clamp(2.5rem, 1.9rem + 3vw, 4rem);
+
+  /* Spacing scale (8pt) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* Radius / shadow / motion */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.35s;
+
+  /* Layout */
+  --container-max: 1200px;
+  --header-h: 72px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Nebula design tokens — colors, gradients & type for the
+   hero (section 1) and core-idea (section 2). Every value the
+   component modules paint with is defined here as a variable.
+   ───────────────────────────────────────────────────────── */
+:root {
+  /* Warm hero gradient (deep red → orange → tan) */
+  --neb-orange-deep: #a52e17;
+  --neb-orange: #c8481b;
+  --neb-amber: #d97b34;
+  --neb-cream: #c6a06d;
+  --neb-hero-bg: linear-gradient(
+    172deg,
+    var(--neb-orange-deep) 0%,
+    var(--neb-orange) 30%,
+    var(--neb-amber) 58%,
+    var(--neb-cream) 100%
+  );
+
+  /* Light faded text on the warm hero (big headline + paragraph) */
+  --neb-hero-text: rgba(250, 241, 230, 0.92);
+  --neb-hero-text-faint: rgba(250, 241, 230, 0.5);   /* faded "experience" */
+  /* Muted dark-brown small meta text */
+  --neb-hero-meta: rgba(44, 20, 8, 0.66);
+  --neb-hero-meta-soft: rgba(44, 20, 8, 0.5);
+
+  --neb-watermark: rgba(255, 244, 228, 0.17);        /* giant hero text */
+  --neb-watermark-dark: rgb(87 87 87 / 6%);  /* giant text on dark section */
+  --neb-circle: #f7f2ea;
+  --neb-circle-ink: #1c1509;
+
+  /* Legacy ink aliases (kept for the phone fallback mockup) */
+  --neb-ink: #1c1509;
+  --neb-ink-soft: #4a3a22;
+  --neb-ink-muted: rgba(40, 24, 10, 0.58);
+  --neb-ink-faint: rgba(28, 21, 9, 0.34);
+
+  /* Dark section */
+  --neb-dark: #0a0908;
+  --neb-dark-elev: #141210;
+  --neb-on-dark: #f2ede7;
+  --neb-on-dark-muted: #857d73;
+  --neb-on-dark-faint: #2c2824;
+  --neb-accent: #e8752a;
+  --neb-hairline: rgba(242, 237, 231, 0.12);
+
+  /* Section-2 heading fade (bright → dark grey) */
+  --neb-fade-heading: linear-gradient(
+    177deg,
+    #f4efe9 0%,
+    #cfc8c0 30%,
+    #8f887f 55%,
+    #4a453f 78%,
+    #2f2b27 100%
+  );
+
+  /* Phone mockup */
+  --neb-phone-body: #0d0d0f;
+  --neb-phone-screen: #171718;
+  --neb-phone-art: linear-gradient(150deg, #6a4a2f, #21201f 70%);
+  --neb-phone-art-2: linear-gradient(150deg, #3a2540, #17161a 70%);
+
+  /* Typography */
+  --neb-font: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --neb-font-display: "Clash Display", "Inter", "Helvetica Neue", sans-serif;
+  --neb-font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --neb-font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --neb-fs-hero: clamp(2.4rem, 1.5rem + 3.6vw, 4.4rem);
+  --neb-fs-idea: clamp(2rem, 0.6rem + 5.2vw, 4.6rem);
+  --neb-fs-watermark: clamp(4.5rem, 1rem + 16vw, 15rem);
+  --neb-fs-lead: clamp(1.05rem, 0.9rem + 0.5vw, 1.35rem);
+  --neb-fs-body: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
+  --neb-fs-meta: 0.72rem;
+  --neb-fs-label: 0.78rem;
+
+  --neb-lh-tight: 0.97;
+  --neb-lh-snug: 1.05;
+  --neb-lh-body: 1.5;
+
+  /* Shared section typography — same across all non-hero sections */
+  --neb-fs-section-heading: clamp(2rem, 1rem + 3.3vw, 3.4rem);
+  --neb-lh-section-heading: 1.1;
+  --neb-fs-section-text: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
+  --neb-lh-section-text: 1.6;
+  --neb-track-tight: -0.03em;
+  --neb-track-meta: 0.04em;
+  --neb-weight-regular: 400;
+  --neb-weight-medium: 500;
+  --neb-weight-semi: 600;
+  --neb-weight-bold: 700;
+
+  /* Nebula radii */
+  --neb-radius-phone: 44px;
+  --neb-radius-pill: 999px;
+}

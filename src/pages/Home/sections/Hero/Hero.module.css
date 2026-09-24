@@ -1,0 +1,195 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  padding: var(--space-16) var(--space-8) 0;
+  background: var(--neb-hero-bg);
+  color: var(--neb-hero-meta);
+  font-family: var(--neb-font);
+}
+
+/* ── Top meta bar ─────────────────────────────── */
+.topbar {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--neb-fs-meta);
+  font-weight: var(--neb-weight-medium);
+  color: var(--neb-hero-meta);
+}
+.metaLabel {
+  color: var(--neb-hero-meta-soft);
+  letter-spacing: var(--neb-track-meta);
+}
+
+.logo {
+  justify-self: end;
+  font-size: var(--neb-fs-label);
+  font-weight: var(--neb-weight-bold);
+  letter-spacing: var(--neb-track-meta);
+  text-align: right;
+}
+.logo sup {
+  font-size: 0.6em;
+}
+
+/* ── Giant watermark ──────────────────────────── */
+.watermark {
+  position: absolute;
+  top: 76%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  font-size: var(--neb-fs-watermark);
+  font-weight: var(--neb-weight-bold);
+  letter-spacing: var(--neb-track-tight);
+  line-height: 1;
+  color: var(--neb-watermark);
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+/* ── Stage ────────────────────────────────────── */
+.stage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  min-height: 520px;
+}
+
+/* Phone visual entrance + gentle float (CSS so it always runs on load). */
+.phoneEnter {
+  animation: phoneIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+@keyframes phoneIn {
+  from { opacity: 0; transform: translateY(80px) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .phoneEnter { animation: none; opacity: 1; transform: none; }
+}
+
+.title {
+  font-family: var(--neb-font-display);
+  font-size: var(--neb-fs-hero);
+  font-weight: var(--neb-weight-semi);
+  line-height: var(--neb-lh-tight);
+  letter-spacing: var(--neb-track-tight);
+  color: var(--neb-hero-text);
+}
+.faded {
+  color: var(--neb-hero-text-faint);
+}
+
+.intro {
+  font-size: var(--neb-fs-lead);
+  line-height: var(--neb-lh-snug);
+  color: var(--neb-hero-text);
+  font-weight: var(--neb-weight-medium);
+}
+
+.metaBlock {
+  font-size: var(--neb-fs-body);
+  line-height: var(--neb-lh-snug);
+  color: var(--neb-hero-meta);
+}
+
+.date {
+  font-size: var(--neb-fs-body);
+  line-height: var(--neb-lh-snug);
+  color: var(--neb-hero-meta);
+  text-align: right;
+}
+
+.process {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--neb-fs-body);
+  color: var(--neb-hero-meta);
+}
+
+.location {
+  font-size: var(--neb-fs-body);
+  line-height: var(--neb-lh-snug);
+  color: var(--neb-hero-meta);
+}
+
+/* ── Circular controls ────────────────────────── */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.circle {
+  display: grid;
+  place-items: center;
+  width: clamp(44px, 3.4vw, 54px);
+  height: clamp(44px, 3.4vw, 54px);
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-circle);
+  color: var(--neb-circle-ink);
+  box-shadow: 0 6px 18px rgba(60, 20, 0, 0.18);
+  transition: transform var(--dur) var(--ease);
+}
+.circle:hover {
+  transform: scale(1.06);
+}
+
+/* ── Desktop editorial placement ──────────────── */
+@media (min-width: 900px) {
+  /* Fill the hero so the bottom-anchored visual sits flush at the bottom. */
+  .hero { display: flex; flex-direction: column; }
+  .stage { flex: 1; min-height: 0; }
+  .headline { position: absolute; left: 0; top: 14%; max-width: 46%; }
+  /* nudged up 4px so its first line matches the heading's cap height exactly */
+  .intro { position: absolute; right: 0; top: calc(14% - 4px); max-width: 24%; }
+  .leftMeta {
+    position: absolute;
+    left: 0;
+    top: 52%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+  .phone {
+    position: absolute;
+    left: 57%;
+    bottom: -28px;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+  .rightMeta { position: absolute; right: 0; top: 32%; }
+  .process { position: absolute; left: 64%; bottom: 22%; }
+  .location { position: absolute; left: 64%; bottom: 5%; }
+  .controls { position: absolute; right: 0; bottom: 5%; }
+}
+
+/* ── Mobile / tablet: honest vertical stack ───── */
+@media (max-width: 899px) {
+  .stage {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    align-items: flex-start;
+    min-height: 0;
+    margin-top: var(--space-12);
+  }
+  .phone { align-self: center; }
+  .controls { flex-direction: row; }
+  .watermark { top: 60%; }
+}

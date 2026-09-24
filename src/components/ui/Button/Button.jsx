@@ -1,0 +1,13 @@
+import { Link } from "react-router-dom";
+import styles from "./Button.module.css";
+
+/**
+ * Polymorphic button: renders <Link> when `to` is set, <a> for `href`, else <button>.
+ * @param {"primary"|"ghost"} [variant]
+ */
+export default function Button({ variant = "primary", to, href, className = "", children, ...rest }) {
+  const cls = `${styles.btn} ${styles[variant]} ${className}`;
+  if (to) return <Link to={to} className={cls} {...rest}>{children}</Link>;
+  if (href) return <a href={href} className={cls} {...rest}>{children}</a>;
+  return <button className={cls} {...rest}>{children}</button>;
+}

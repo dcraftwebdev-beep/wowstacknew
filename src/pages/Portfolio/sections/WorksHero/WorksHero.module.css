@@ -1,0 +1,77 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-family: var(--neb-font);
+  overflow: hidden;
+  isolation: isolate;
+  background: url("/images/recent-works/ourworks.png") center / cover no-repeat, var(--neb-dark);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(90deg, rgba(6, 6, 6, 0.85) 0%, rgba(6, 6, 6, 0.4) 46%, rgba(6, 6, 6, 0.05) 80%),
+    linear-gradient(0deg, rgba(6, 6, 6, 0.6) 0%, transparent 45%);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--neb-fs-meta);
+  letter-spacing: var(--neb-track-meta);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: var(--space-6);
+}
+.eyebrowDots {
+  display: block;
+  width: 24px;
+  height: auto;
+  color: var(--neb-accent);
+}
+
+.title {
+  font-family: var(--neb-font-display);
+  font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4.6rem);
+  font-weight: var(--neb-weight-semi);
+  line-height: 1.03;
+  letter-spacing: var(--neb-track-tight);
+  max-width: 10ch;
+}
+.accent {
+  background: var(--neb-fade-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sub {
+  margin-top: var(--space-6);
+  max-width: 35ch;
+  font-size: var(--neb-fs-section-text);
+  line-height: var(--neb-lh-section-text);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 88vh;
+    background-position: 66% center;
+  }
+}

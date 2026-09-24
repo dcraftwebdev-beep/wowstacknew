@@ -1,0 +1,151 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  font-family: var(--neb-font);
+  overflow: hidden;
+  isolation: isolate;
+  background: url("/images/services/servicebanner.png") center / cover no-repeat, var(--neb-dark);
+  /* Keep every line legible wherever it lands on the photo. */
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+}
+
+/* Readability scrim — darker at the left and bottom where the text sits. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.25) 42%, transparent 70%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.15) 40%, transparent 65%);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+  padding-bottom: clamp(var(--space-16), 12vh, var(--space-24));
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+
+/* ── Left headline block ──────────────────────── */
+.content {
+  max-width: 620px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--neb-fs-meta);
+  letter-spacing: var(--neb-track-meta);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: var(--space-5, 1.25rem);
+}
+.eyebrowDots {
+  display: block;
+  width: 24px;
+  height: auto;
+  color: var(--neb-accent);
+}
+
+.title {
+  font-family: var(--neb-font-display);
+  font-size: clamp(2.6rem, 1.4rem + 4.4vw, 3rem);
+  font-weight: var(--neb-weight-semi);
+  line-height: 1.02;
+  letter-spacing: var(--neb-track-tight);
+  margin-bottom: var(--space-6);
+}
+/* Second line — bright→grey fade, matching the site's heading treatment. */
+.accent {
+  background: var(--neb-fade-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sub {
+  font-size: var(--neb-fs-section-text);
+  line-height: var(--neb-lh-section-text);
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 35ch;
+  margin-bottom: var(--space-8);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--neb-radius-pill);
+  background: #fff;
+  color: #111;
+  font-weight: var(--neb-weight-semi);
+  font-size: var(--neb-fs-body);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.cta:hover {
+  color: #111;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Right feature callouts ───────────────────── */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-bottom: var(--space-2);
+  flex: 0 0 auto;
+}
+.feature {
+  min-width: 190px;
+}
+.featDots {
+  display: block;
+  width: 34px;
+  height: auto;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--space-3);
+}
+.featTitle {
+  font-family: var(--neb-font-display);
+  font-size: 1.35rem;
+  font-weight: var(--neb-weight-semi);
+  line-height: 1.15;
+  color: #fff;
+}
+.featSub {
+  font-size: var(--neb-fs-body);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 900px) {
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-10, 2.5rem);
+  }
+  .features {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    background-position: 65% center;
+  }
+  .features {
+    gap: var(--space-6);
+  }
+}

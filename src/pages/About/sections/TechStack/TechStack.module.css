@@ -1,0 +1,134 @@
+.section {
+  color: var(--neb-on-dark);
+  font-family: var(--neb-font);
+  padding-block: var(--space-24);
+  overflow: hidden;
+  /* Layered: warm spotlight glow + dark scrim over the bg image so text and
+     logos stay readable, with the supplied artwork underneath. */
+  background:
+    radial-gradient(60% 55% at 18% 22%, rgba(232, 117, 42, 0.18), transparent 62%),
+    radial-gradient(70% 60% at 90% 30%, rgba(232, 117, 42, 0.08), transparent 68%),
+    linear-gradient(180deg, rgba(15, 13, 12, 0.82) 0%, rgba(10, 10, 10, 0.72) 55%, rgba(6, 6, 6, 0.9) 100%),
+    url("/images/techsbg.png") center / cover no-repeat,
+    var(--neb-dark);
+}
+
+.inner {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 60ch;
+  margin-bottom: var(--space-12);
+}
+
+/* Consistent section heading — same fade + size as every other section. */
+.heading {
+  font-family: var(--neb-font-display);
+  font-size: var(--neb-fs-section-heading);
+  font-weight: var(--neb-weight-semi);
+  line-height: var(--neb-lh-section-heading);
+  letter-spacing: var(--neb-track-tight);
+  background: var(--neb-fade-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  max-width: 16ch;
+}
+
+.lead {
+  font-size: var(--neb-fs-section-text);
+  line-height: var(--neb-lh-section-text);
+  color: var(--neb-on-dark-muted);
+  max-width: 52ch;
+}
+
+/* ── Marquee rows ─────────────────────────────── */
+.marquees {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  /* Soft fade at both horizontal edges so tiles dissolve in/out. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.row {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: var(--space-6);
+  width: max-content;
+  animation: scrollLeft 42s linear infinite;
+}
+.track.reverse {
+  animation-name: scrollRight;
+  animation-duration: 48s;
+}
+
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes scrollRight {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+/* ── Tile ─────────────────────────────────────── */
+.tile {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 0 0 auto;
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--neb-hairline);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tileMark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-md);
+  background: var(--neb-dark);
+  border: 1px solid var(--neb-hairline);
+}
+.logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.tileName {
+  font-size: var(--neb-fs-body);
+  font-weight: var(--neb-weight-medium);
+  white-space: nowrap;
+  color: var(--neb-on-dark);
+}
+
+@media (max-width: 640px) {
+  .tileMark { width: 38px; height: 38px; }
+  .logo { width: 22px; height: 22px; }
+  .tile { padding: var(--space-3) var(--space-4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+  /* Fall back to a normal horizontal scroll of the first copy. */
+  .row {
+    overflow-x: auto;
+  }
+}

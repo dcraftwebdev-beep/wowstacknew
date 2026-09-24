@@ -1,0 +1,103 @@
+.device {
+  position: relative;
+  width: clamp(240px, 26vw, 320px);
+  aspect-ratio: 320 / 620;
+  background: var(--neb-phone-body);
+  border-radius: var(--neb-radius-phone);
+  padding: 10px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+.notch {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32%;
+  height: 22px;
+  background: var(--neb-phone-body);
+  border-radius: var(--neb-radius-pill);
+  z-index: 2;
+}
+.screen {
+  height: 100%;
+  background: var(--neb-phone-screen);
+  border-radius: calc(var(--neb-radius-phone) - 10px);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow: hidden;
+  color: var(--neb-on-dark);
+}
+.statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--neb-fs-meta);
+  font-weight: var(--neb-weight-semi);
+}
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-accent);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--neb-weight-bold);
+  letter-spacing: var(--neb-track-meta);
+  font-size: var(--neb-fs-body);
+}
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-on-dark);
+}
+.searchRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--neb-accent);
+  border-radius: var(--neb-radius-pill);
+}
+.search {
+  font-size: 0.7rem;
+  color: var(--neb-on-dark-muted);
+}
+.mic {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-accent);
+}
+.tabs {
+  display: flex;
+  gap: var(--space-4);
+  font-size: var(--neb-fs-meta);
+  color: var(--neb-on-dark-muted);
+}
+.tabActive {
+  color: var(--neb-on-dark);
+  font-weight: var(--neb-weight-bold);
+}
+.cards {
+  flex: 1;
+  display: flex;
+  gap: var(--space-3);
+}
+.card {
+  flex: 1;
+  border-radius: var(--radius-md);
+  background: var(--neb-phone-art);
+}
+.card2 {
+  background: var(--neb-phone-art-2);
+}
+.card3 {
+  background: linear-gradient(150deg, #7a3a1a, #1a1614 70%);
+}

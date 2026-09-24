@@ -1,0 +1,147 @@
+.section {
+  background: var(--neb-dark);
+  color: var(--neb-on-dark);
+  font-family: var(--neb-font);
+  padding-block: var(--space-24);
+}
+
+.inner {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 380px);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+/* ── Left column ──────────────────────────────── */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.title {
+  font-family: var(--neb-font-display);
+  font-size: clamp(2.4rem, 1.2rem + 4vw, 4.2rem);
+  font-weight: var(--neb-weight-semi);
+  line-height: 1.02;
+  letter-spacing: var(--neb-track-tight);
+  background: var(--neb-fade-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-top: var(--space-4);
+}
+
+/* ── Numbered cards ───────────────────────────── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--neb-hairline);
+  /* Dark scrim over the shared card artwork so text stays readable. */
+  background:
+    linear-gradient(180deg, rgba(12, 12, 12, 0.72) 0%, rgba(8, 8, 8, 0.82) 100%),
+    url("/images/services/cardsbg.png") center / cover no-repeat,
+    var(--neb-dark);
+}
+
+/* First card — warm accent panel: same artwork with an orange tint. */
+.cardFeature {
+  border-color: transparent;
+  color: #fff;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 11px),
+    linear-gradient(160deg, rgba(242, 133, 58, 0.9) 0%, rgba(209, 86, 15, 0.92) 60%, rgba(184, 72, 10, 0.94) 100%),
+    url("/images/services/cardsbg.png") center / cover no-repeat,
+    #d1560f;
+}
+
+.num {
+  font-family: var(--neb-font-display);
+  font-size: clamp(3.2rem, 2rem + 3.5vw, 5rem);
+  font-weight: var(--neb-weight-regular);
+  line-height: 1;
+  letter-spacing: var(--neb-track-tight);
+  color: #fff;
+  text-align: end;
+}
+
+.cardBody {
+  margin-top: auto;
+}
+.cardLabel {
+  font-size: 1.15rem;
+  font-weight: var(--neb-weight-semi);
+  margin-bottom: var(--space-5);
+  color: #fff;
+}
+.cardText {
+  font-size: var(--neb-fs-body);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+}
+.cardFeature .cardText {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Right visual — sticky while the left column scrolls ──── */
+.right {
+  position: sticky;
+  top: var(--space-16);
+  align-self: start;
+  display: flex;
+}
+.image {
+  width: 100%;
+  height: min(640px, calc(100vh - var(--space-16) * 2));
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+.imgFallback {
+  width: 100%;
+  height: min(640px, calc(100vh - var(--space-16) * 2));
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(120% 80% at 70% 20%, rgba(232, 117, 42, 0.35), transparent 60%),
+    linear-gradient(160deg, #26221e, #050505);
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 960px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+  .right {
+    order: -1;
+    position: static;
+  }
+  .image,
+  .imgFallback {
+    height: auto;
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 620px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    min-height: 0;
+  }
+  .cardBody {
+    margin-top: var(--space-8);
+  }
+}

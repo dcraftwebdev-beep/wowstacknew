@@ -1,0 +1,13 @@
+.index {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+.num {
+  font-size: var(--neb-fs-meta);
+  letter-spacing: var(--neb-track-meta);
+  opacity: 0.55;
+}
+.label {
+  font-size: var(--neb-fs-body);
+}

@@ -1,0 +1,145 @@
+.section {
+  background: var(--neb-dark);
+  color: var(--neb-on-dark);
+  font-family: var(--neb-font);
+  padding-block: var(--space-24);
+}
+
+.inner {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+}
+
+/* ── Header: heading left, intro + CTA right ──── */
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+  margin-bottom: var(--space-16);
+}
+.headLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.eyebrow {
+  font-size: var(--neb-fs-meta);
+  text-transform: uppercase;
+  letter-spacing: var(--neb-track-meta);
+  color: var(--neb-accent);
+  font-weight: var(--neb-weight-semi);
+}
+.heading {
+  font-family: var(--neb-font-display);
+  font-size: var(--neb-fs-section-heading);
+  font-weight: var(--neb-weight-semi);
+  line-height: var(--neb-lh-section-heading);
+  letter-spacing: var(--neb-track-tight);
+  background: var(--neb-fade-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  max-width: 14ch;
+}
+.headRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-top: var(--space-2);
+}
+.lead {
+  font-size: var(--neb-fs-section-text);
+  line-height: var(--neb-lh-section-text);
+  color: var(--neb-on-dark);
+  max-width: 44ch;
+}
+.cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+.ctaNote {
+  font-size: var(--neb-fs-meta);
+  line-height: 1.3;
+  color: var(--neb-on-dark-muted);
+}
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-accent);
+  color: #fff;
+  font-weight: var(--neb-weight-semi);
+  font-size: var(--neb-fs-body);
+  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.ctaBtn:hover { filter: brightness(1.08); transform: translateY(-2px); color: #fff; }
+
+/* ── Work image grid ──────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  aspect-ratio: 16 / 10;
+  cursor: none;
+}
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur) var(--ease);
+}
+.card:hover .cardImg {
+  transform: scale(1.04);
+}
+.mediaFallback {
+  background:
+    radial-gradient(120% 90% at 50% 30%, rgba(232, 117, 42, 0.28), transparent 60%),
+    linear-gradient(150deg, #26221e, #050505);
+}
+
+/* Cursor-following arrow.
+   Outer span is moved by translate3d imperatively — NO transition here, so it
+   tracks the pointer instantly. The inner dot handles the enter/leave scale. */
+.cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  pointer-events: none;
+  will-change: transform;
+}
+.cursorDot {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-accent);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(232, 117, 42, 0.45);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.cursorShow {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 860px) {
+  .header { grid-template-columns: 1fr; gap: var(--space-6); }
+  .grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+  .card { cursor: pointer; }
+  .cursor { display: none; }
+}

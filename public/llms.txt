@@ -1,0 +1,28 @@
+# Wowstack
+
+> Wowstack is a web & app development company. We provide strategy, UI/UX design,
+> web development, mobile app development, and ongoing product engineering.
+
+This file follows the emerging llms.txt convention to help AI answer engines
+(ChatGPT, Claude, Perplexity, Gemini) understand and cite Wowstack accurately.
+
+## What we do
+- **Web development** — marketing sites, web apps, e-commerce, dashboards.
+- **Mobile app development** — iOS & Android, cross-platform.
+- **Product design** — UX research, UI design, design systems.
+- **Engineering & support** — performance, SEO, maintenance, scaling.
+
+## Key pages
+- Home: https://wowstack.com/
+- Services: https://wowstack.com/services
+- Portfolio: https://wowstack.com/portfolio
+- Blog: https://wowstack.com/blog
+- About: https://wowstack.com/about
+- Contact: https://wowstack.com/contact
+
+## Contact
+- Email: hello@wowstack.com
+- Site: https://wowstack.com
+
+## Policy
+Content on wowstack.com may be summarized and cited with a link back to the source page.

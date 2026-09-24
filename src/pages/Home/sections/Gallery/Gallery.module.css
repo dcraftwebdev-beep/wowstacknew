@@ -1,0 +1,57 @@
+.gallery {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Centered title — inverts against the moving images */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-inline: var(--space-4);
+  pointer-events: none;
+  mix-blend-mode: exclusion;
+  color: #fff;
+}
+.title {
+  font-family: var(--neb-font-serif);
+  font-weight: var(--neb-weight-regular);
+  font-size: clamp(2.75rem, 1rem + 9vw, 8rem);
+  line-height: 1;
+  letter-spacing: var(--neb-track-tight);
+}
+.italic {
+  font-style: italic;
+}
+
+/* Navigation hint */
+.hint {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--neb-font-mono);
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: var(--neb-weight-semi);
+  letter-spacing: var(--neb-track-meta);
+  color: var(--neb-on-dark);
+  pointer-events: none;
+}
+.hintMuted {
+  opacity: 0.6;
+}

@@ -1,0 +1,32 @@
+.stack {
+  position: relative;
+  width: clamp(260px, 35vw, 440px);
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 50px 90px rgba(30, 8, 0, 0.5));
+  /* Pure cross-fade — both pics stay the exact same size and bottom position. */
+  opacity: 0;
+  transition: opacity 1.1s var(--ease);
+}
+
+/* First image stays in flow so the stack keeps its height; the rest overlap it,
+   anchored to the bottom so every pic sits at the exact same spot. */
+.img:not(:first-child) {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.active {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img {
+    transition: opacity 0.2s linear;
+  }
+}

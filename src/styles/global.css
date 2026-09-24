@@ -1,0 +1,63 @@
+/* App-wide layout helpers (non-component). */
+
+#main {
+  min-height: 60vh;
+}
+
+.route-fallback {
+  min-height: 60vh;
+}
+
+/* Accessible skip target / visually-hidden utility. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ─────────────────────────────────────────────────────────
+   Section edge fade — soft blend between stacked sections so
+   there's no hard horizontal cut. The gradient sits BEHIND the
+   section content (z-index:-1 within an isolated stacking
+   context), fading the section's own background toward black at
+   the top and bottom edges. On already-dark sections it's
+   invisible; on the warm sections it dissolves into the dark
+   neighbours. Add the class alongside a section's module class.
+   ───────────────────────────────────────────────────────── */
+.edgeFade,
+.edgeFadeBottom {
+  position: relative;
+  isolation: isolate;
+}
+.edgeFade::before,
+.edgeFade::after,
+.edgeFadeBottom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* Kept within the sections' vertical padding so it never darkens edge text. */
+  height: clamp(44px, 6vh, 88px);
+  pointer-events: none;
+  z-index: -1;
+}
+.edgeFade::before {
+  top: 0;
+  background: linear-gradient(to bottom, #000, transparent);
+}
+.edgeFade::after,
+.edgeFadeBottom::after {
+  bottom: 0;
+  background: linear-gradient(to top, #000, transparent);
+}

@@ -1,0 +1,2 @@
+import{i as e}from"./seo.config-BDVFNuer.js";var t={index:`SectionIndex-module_index__Zg781`,num:`SectionIndex-module_num__7N-wb`,label:`SectionIndex-module_label__56Oao`},n=e();function r({number:e,label:r}){return(0,n.jsxs)(`div`,{className:t.index,children:[(0,n.jsxs)(`span`,{className:t.num,children:[e,` /`]}),(0,n.jsx)(`span`,{className:t.label,children:r})]})}export{r as t};
+//# sourceMappingURL=SectionIndex-C3V4u-3y.js.map

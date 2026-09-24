@@ -1,0 +1,2 @@
+import{o as e}from"./index-Lwc_uGMI.js";async function t(t){let{error:n}=await e.from(`contact_messages`).insert({name:t.name,email:t.email,message:t.message});return n?{ok:!1,error:n.message}:{ok:!0}}export{t};
+//# sourceMappingURL=contact-DOQVRxwZ.js.map

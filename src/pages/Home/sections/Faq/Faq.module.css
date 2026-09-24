@@ -1,0 +1,139 @@
+.section {
+  background: var(--neb-dark);
+  color: var(--neb-on-dark);
+  font-family: var(--neb-font);
+  padding-block: var(--space-24);
+}
+
+.inner {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+/* ── Left column ──────────────────────────────── */
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+.title {
+  font-family: var(--neb-font-display);
+  font-size: var(--neb-fs-section-heading);
+  font-weight: var(--neb-weight-semi);
+  line-height: var(--neb-lh-section-heading);
+  letter-spacing: var(--neb-track-tight);
+  background: var(--neb-fade-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  max-width: 14ch;
+}
+.sub {
+  font-size: var(--neb-fs-body);
+  line-height: var(--neb-lh-body);
+  color: var(--neb-on-dark-muted);
+  max-width: 42ch;
+}
+.mail { color: var(--neb-on-dark); border-bottom: 1px solid var(--neb-accent); }
+.askBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-accent);
+  color: #fff;
+  font-weight: var(--neb-weight-semi);
+  font-size: var(--neb-fs-body);
+  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.askBtn:hover { filter: brightness(1.08); transform: translateY(-2px); color: #fff; }
+
+/* ── Right accordion cards ────────────────────── */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.item {
+  border-radius: var(--radius-lg);
+  background: var(--neb-dark-elev);
+  border: 1px solid var(--neb-hairline);
+  padding: var(--space-2) var(--space-6);
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.itemOpen {
+  border-color: color-mix(in srgb, var(--neb-accent) 45%, transparent);
+  background: color-mix(in srgb, var(--neb-dark-elev) 80%, var(--neb-accent) 6%);
+}
+.q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  text-align: left;
+  padding-block: var(--space-2);
+  font-size: var(--neb-fs-lead);
+  font-weight: var(--neb-weight-medium);
+  color: var(--neb-on-dark);
+}
+.toggle {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--neb-radius-pill);
+  background: linear-gradient(150deg, var(--neb-accent), #b8330f);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(232, 117, 42, 0.4);
+  transition: transform var(--dur) var(--ease);
+}
+.itemOpen .toggle {
+  transform: rotate(180deg);
+}
+/* Vertical stroke morphs +/− smoothly */
+.vLine {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.itemOpen .vLine {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+/* Smooth open/close by animating grid rows to the exact content height */
+.answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur) var(--ease);
+}
+.answerOpen {
+  grid-template-rows: 1fr;
+}
+.answerInner {
+  overflow: hidden;
+  min-height: 0;
+}
+.answerInner > p {
+  padding-top: var(--space-4);
+  color: var(--neb-on-dark-muted);
+  font-size: var(--neb-fs-body);
+  line-height: var(--neb-lh-body);
+  max-width: 56ch;
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 860px) {
+  .inner { grid-template-columns: 1fr; gap: var(--space-10, 2.5rem); }
+  .left { position: static; }
+}

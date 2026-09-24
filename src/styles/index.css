@@ -1,0 +1,6 @@
+/* Entry stylesheet — import order matters: tokens → reset → base → global → lenis. */
+@import "./variables.css";
+@import "./reset.css";
+@import "./typography.css";
+@import "./global.css";
+@import "lenis/dist/lenis.css";

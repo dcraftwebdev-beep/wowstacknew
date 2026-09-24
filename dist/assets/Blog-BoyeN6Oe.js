@@ -1,0 +1,2 @@
+import{i as e}from"./seo.config-BDVFNuer.js";import{t}from"./Seo-CQ8lcLGR.js";import{i as n,t as r}from"./schema-1sN6GfKb.js";var i=e(),a=n.blog;function o(){return(0,i.jsx)(i.Fragment,{children:(0,i.jsx)(t,{title:a.title,description:a.description,path:a.path,jsonLd:[r([{name:`Home`,path:`/`},{name:`Blog`,path:`/blog`}])]})})}export{o as default};
+//# sourceMappingURL=Blog-BoyeN6Oe.js.map

@@ -1,0 +1,148 @@
+.section {
+  position: relative;
+  color: var(--neb-on-dark);
+  font-family: var(--neb-font);
+  padding-block: var(--space-24);
+  background:
+    radial-gradient(55% 45% at 12% 18%, rgba(232, 117, 42, 0.2), transparent 70%),
+    radial-gradient(50% 55% at 88% 90%, rgba(232, 117, 42, 0.12), transparent 72%),
+    var(--neb-dark);
+}
+
+.inner {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  gap: var(--space-16);
+}
+
+/* ── Header row: heading left, small image right ── */
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+.headText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+.heading {
+  font-family: var(--neb-font-display);
+  font-size: var(--neb-fs-section-heading);
+  font-weight: var(--neb-weight-semi);
+  line-height: var(--neb-lh-section-heading);
+  letter-spacing: var(--neb-track-tight);
+  color: var(--neb-on-dark);
+}
+.faded {
+  color: var(--neb-on-dark-muted);
+}
+.headImg {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* ── 4 objective cards ────────────────────────── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  align-items: end; /* bottoms align; the featured card grows upward */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-height: 340px;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.055);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--neb-accent) 55%, transparent);
+}
+
+/* Featured (dark, taller, raised) */
+.featured {
+  min-height: 420px;
+  background: linear-gradient(165deg, #16130f, #050505);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+
+/* Icon badge */
+.icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--neb-accent);
+}
+.featured .icon {
+  background: var(--neb-accent);
+  color: #0a0908;
+}
+
+.cardTitle {
+  font-family: var(--neb-font);
+  font-size: var(--neb-fs-lead);
+  font-weight: var(--neb-weight-bold);
+  line-height: var(--neb-lh-snug);
+  letter-spacing: var(--neb-track-tight);
+  color: var(--neb-on-dark);
+  margin-top: auto; /* push title + bullets toward the bottom */
+}
+
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.bullets li {
+  position: relative;
+  padding-left: var(--space-5);
+  font-size: var(--neb-fs-body);
+  line-height: var(--neb-lh-snug);
+  color: var(--neb-on-dark-muted);
+}
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-accent);
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 980px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+  }
+  .featured { min-height: 340px; }
+}
+@media (max-width: 560px) {
+  .cards { grid-template-columns: 1fr; }
+  .headImg { max-width: 110px; }
+}

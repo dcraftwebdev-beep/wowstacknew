@@ -1,0 +1,248 @@
+.section {
+  position: relative;
+  color: var(--neb-on-dark);
+  font-family: var(--neb-font);
+  padding-block: var(--space-24);
+  overflow: hidden;
+  background:
+    radial-gradient(45% 55% at 100% 30%, rgba(232, 117, 42, 0.18), transparent 70%),
+    radial-gradient(40% 40% at 0% 90%, rgba(232, 117, 42, 0.1), transparent 70%),
+    var(--neb-dark);
+}
+
+.inner {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: var(--space-8);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+.title {
+  font-family: var(--neb-font-display);
+  font-size: var(--neb-fs-section-heading);
+  font-weight: var(--neb-weight-semi);
+  line-height: var(--neb-lh-section-heading);
+  letter-spacing: var(--neb-track-tight);
+  background: var(--neb-fade-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  max-width: 22ch;
+}
+/* Accent stays for the card "= answer" statements (card design), not headings. */
+.accent { color: var(--neb-accent); }
+
+/* ── Grid: row1 two cards / row2 full-width image / row3 two cards ── */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neb-hairline);
+  transition: border-color var(--dur) var(--ease);
+  /* Shared card artwork with a dark scrim so text stays readable. */
+  background:
+    linear-gradient(180deg, rgba(12, 12, 12, 0.78) 0%, rgba(8, 8, 8, 0.86) 100%),
+    url("/images/services/cardsbg.png") center / cover no-repeat,
+    #0c0c0e;
+}
+.card:hover {
+  border-color: color-mix(in srgb, var(--neb-accent) 45%, transparent);
+}
+
+/* Cursor-following arrow */
+/* Outer span is moved by translate3d imperatively — NO transition here, so it
+   tracks the pointer instantly. The inner dot handles the enter/leave scale. */
+.cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  pointer-events: none;
+  will-change: transform;
+}
+.cursorDot {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-accent);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(232, 117, 42, 0.45);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.cursorShow {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Row 2 — image cell (left): the image absolutely fills the cell, so the row's
+   height is driven by the stacked cards beside it (no empty gap). */
+.imageCell {
+  position: relative;
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 320px;
+}
+.imageCellImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Row 2 — two cards stacked in the right column, filling the image height. */
+.stackCell {
+  display: flex;
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+}
+.stack > * {
+  flex: 1;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+}
+.cardLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--neb-fs-meta);
+  color: var(--neb-on-dark-muted);
+}
+.cardNum {
+  font-size: var(--neb-fs-meta);
+  color: var(--neb-on-dark-muted);
+}
+
+/* Statement — big uppercase, answer in accent */
+.statement {
+  font-family: var(--neb-font-display);
+  font-size: clamp(1.85rem, 1rem + 1.7vw, 1.5rem);
+  font-weight: var(--neb-weight-bold);
+  line-height: 1.02;
+  letter-spacing: var(--neb-track-tight);
+  text-transform: uppercase;
+  color: var(--neb-on-dark);
+}
+.body {
+  margin-top: var(--space-5);
+  font-size: var(--neb-fs-body);
+  line-height: var(--neb-lh-body);
+  color: var(--neb-on-dark-muted);
+  max-width: 40ch;
+}
+.cardFoot {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-8);
+  font-size: var(--neb-fs-meta);
+  color: var(--neb-on-dark);
+}
+.muted { color: var(--neb-on-dark-muted); }
+
+/* ── Lead card (orange gradient) ──────────────── */
+.lead {
+  min-height: 300px;
+  position: relative;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.leadGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background:
+    linear-gradient(180deg, rgba(255, 140, 60, 0.85), rgba(200, 60, 20, 0.2) 70%, transparent),
+    repeating-linear-gradient(90deg, rgba(255, 170, 90, 0.35) 0 2px, transparent 2px 7px);
+  filter: blur(3px);
+  pointer-events: none;
+}
+.leadHeading {
+  position: relative;
+  font-family: var(--neb-font-display);
+  font-size: clamp(1.4rem, 1rem + 1.4vw, 2rem);
+  font-weight: var(--neb-weight-bold);
+  line-height: 1.05;
+  letter-spacing: var(--neb-track-tight);
+  text-transform: uppercase;
+  color: var(--neb-on-dark);
+}
+.swipe {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  font-size: var(--neb-fs-body);
+  color: var(--neb-accent);
+}
+
+/* ── See more button ──────────────────────────── */
+.more {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-12);
+}
+.moreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-accent);
+  color: #fff;
+  font-weight: var(--neb-weight-semi);
+  font-size: var(--neb-fs-body);
+  box-shadow: 0 14px 40px rgba(232, 117, 42, 0.35);
+  transition: transform var(--dur) var(--ease), filter var(--dur) var(--ease);
+}
+.moreBtn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+  color: #fff;
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 720px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .imageCell {
+    min-height: clamp(320px, 80vw, 420px);
+  }
+  /* Touch devices: hide the cursor-follow arrow */
+  .cursor {
+    display: none;
+  }
+}

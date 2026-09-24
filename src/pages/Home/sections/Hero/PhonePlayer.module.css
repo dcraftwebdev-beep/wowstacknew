@@ -1,0 +1,119 @@
+.device {
+  position: relative;
+  width: clamp(230px, 24vw, 300px);
+  aspect-ratio: 300 / 620;
+  background: var(--neb-phone-body);
+  border-radius: var(--neb-radius-phone);
+  padding: 10px;
+  box-shadow:
+    0 40px 90px rgba(40, 15, 0, 0.45),
+    0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.notch {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 22px;
+  background: var(--neb-phone-body);
+  border-radius: var(--neb-radius-pill);
+  z-index: 2;
+}
+
+.screen {
+  height: 100%;
+  background: var(--neb-phone-screen);
+  border-radius: calc(var(--neb-radius-phone) - 10px);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow: hidden;
+  color: var(--neb-on-dark);
+}
+
+.statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--neb-fs-meta);
+  font-weight: var(--neb-weight-semi);
+  color: var(--neb-on-dark);
+}
+.dots {
+  width: 42px;
+  height: 10px;
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-on-dark-muted);
+}
+
+.art {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  background: var(--neb-phone-art);
+}
+
+.trackRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.track {
+  font-size: var(--neb-fs-body);
+  font-weight: var(--neb-weight-bold);
+  letter-spacing: var(--neb-track-tight);
+}
+.artist {
+  font-size: var(--neb-fs-meta);
+  color: var(--neb-on-dark-muted);
+}
+.badge {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-accent);
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.time {
+  font-size: 0.6rem;
+  color: var(--neb-on-dark-muted);
+}
+.bar {
+  flex: 1;
+  height: 3px;
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-on-dark-faint);
+  overflow: hidden;
+}
+.fill {
+  display: block;
+  width: 45%;
+  height: 100%;
+  background: var(--neb-on-dark);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  padding-block: var(--space-2);
+}
+.ctrl {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--neb-radius-pill);
+  background: var(--neb-on-dark-faint);
+}
+.play {
+  width: 46px;
+  height: 46px;
+  background: var(--neb-on-dark);
+}

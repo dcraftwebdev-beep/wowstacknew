@@ -1,0 +1,82 @@
+.power {
+  color: var(--neb-on-dark);
+  font-family: var(--neb-font);
+  /* Full viewport so the pinned stage fills the screen while scrubbing */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  /* Spotlight glow so the image reads on the dark theme */
+  background:
+    radial-gradient(46% 40% at 50% 60%, rgba(255, 255, 255, 0.1), transparent 70%),
+    radial-gradient(60% 55% at 50% 55%, rgba(232, 117, 42, 0.16), transparent 72%),
+    var(--neb-dark);
+}
+
+.inner {
+  width: 100%;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-block: var(--space-16);
+  padding-inline: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+}
+
+/* Consistent section heading — same fade + size as the other sections. */
+.heading {
+  font-family: var(--neb-font-display);
+  font-size: var(--neb-fs-section-heading);
+  font-weight: var(--neb-weight-semi);
+  line-height: var(--neb-lh-section-heading);
+  letter-spacing: var(--neb-track-tight);
+  max-width: 20ch;
+}
+
+/* Each heading line is clipped so its inner span can slide up into view. */
+.line {
+  display: block;
+  overflow: hidden;
+}
+.lineInner {
+  display: block;
+  background: var(--neb-fade-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.image {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin-top: var(--space-8);
+  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.55)) brightness(1.05);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--neb-radius-pill);
+  border: 1px solid var(--neb-hairline);
+  color: var(--neb-on-dark);
+  font-weight: var(--neb-weight-medium);
+  font-size: var(--neb-fs-body);
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+.cta:hover {
+  border-color: var(--neb-accent);
+  color: var(--neb-accent);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 560px) {
+  .image { margin-top: var(--space-6); }
+}

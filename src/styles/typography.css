@@ -1,0 +1,32 @@
+/* Base typographic rhythm. Component-level type lives in CSS Modules. */
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-2xl); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+
+p { text-wrap: pretty; }
+
+a:hover { color: var(--color-accent); }
+
+code,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}

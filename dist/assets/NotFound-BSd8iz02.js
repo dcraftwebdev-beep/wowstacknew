@@ -1,0 +1,2 @@
+import{i as e}from"./seo.config-BDVFNuer.js";import{s as t}from"./index-Lwc_uGMI.js";import{t as n}from"./Seo-CQ8lcLGR.js";var r=e();function i(){return(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(n,{title:`Page not found`,path:`/404`,noindex:!0}),(0,r.jsx)(t,{to:`/`,children:`Back home`})]})}export{i as default};
+//# sourceMappingURL=NotFound-BSd8iz02.js.map
