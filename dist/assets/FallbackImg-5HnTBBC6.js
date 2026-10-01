@@ -1,0 +1,2 @@
+import{d as e,h as t,m as n}from"./index-Cn13uAAI.js";var r=t(n(),1),i=e();function a({src:e,alt:t=``,className:n=``,fallbackClassName:a=``}){let[o,s]=(0,r.useState)(!1);return o?(0,i.jsx)(`div`,{className:`${n} ${a}`,role:`img`,"aria-label":t}):(0,i.jsx)(`img`,{className:n,src:e,alt:t,loading:`lazy`,onError:()=>s(!0)})}export{a as t};
+//# sourceMappingURL=FallbackImg-5HnTBBC6.js.map

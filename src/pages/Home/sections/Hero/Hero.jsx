@@ -1,19 +1,39 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import HeroVisual from "./HeroVisual.jsx";
 import styles from "./Hero.module.css";
 
 const smoothEase = [0.16, 1, 0.3, 1];
 
-/** Section 1 — Wowstack editorial hero (web · apps · SEO) with page-load animations. */
+/** Section 1 — Wowstack editorial hero. Entrance animations hold at their
+    initial state until the page loader signals it's done ("wow:loaded"). */
 export default function Hero() {
+  const [started, setStarted] = useState(
+    () => typeof window !== "undefined" && window.__wowLoaded === true
+  );
+
+  useEffect(() => {
+    if (started) return;
+    const onLoaded = () => setStarted(true);
+    window.addEventListener("wow:loaded", onLoaded);
+    // Fallback so the hero never stays hidden if the loader is skipped/removed.
+    const fallback = window.setTimeout(() => setStarted(true), 4200);
+    return () => {
+      window.removeEventListener("wow:loaded", onLoaded);
+      window.clearTimeout(fallback);
+    };
+  }, [started]);
+
   return (
-    <section className={styles.hero}>
+    <section className={`${styles.hero} ${started ? styles.started : ""}`}>
       {/* Giant faded brand watermark behind the phone */}
       <motion.span
         className={styles.watermark}
         aria-hidden="true"
         initial={{ opacity: 0, scale: 1.05, x: "-50%", y: "-50%" }}
-        animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
+        animate={started
+          ? { opacity: 1, scale: 1, x: "-50%", y: "-50%" }
+          : { opacity: 0, scale: 1.05, x: "-50%", y: "-50%" }}
         transition={{ duration: 1.5, ease: smoothEase }}
       >
         WOWSTACK
@@ -24,7 +44,7 @@ export default function Hero() {
         <motion.div
           className={styles.headline}
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={started ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 1.1, delay: 0.15, ease: smoothEase }}
         >
           <h1 className={styles.title}>
@@ -36,19 +56,18 @@ export default function Hero() {
           </h1>
         </motion.div>
 
-        {/* Intro paragraph (top-right) — same entrance as the headline so both
-            start on the same line with no vertical offset. */}
+        {/* Intro paragraph (top-right) */}
         <motion.p
           className={styles.intro}
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={started ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 1.1, delay: 0.15, ease: smoothEase }}
         >
           Wowstack designs and builds fast websites and mobile apps— then optimizes
           them for search and AI engines, turning attention into real growth.
         </motion.p>
 
-        {/* Phone centerpiece — CSS entrance + gentle float (reliable on load) */}
+        {/* Phone centerpiece — CSS entrance runs once the hero is "started" */}
         <div className={styles.phone}>
           <div className={styles.phoneEnter}>
             <div className={styles.phoneFloat}>
@@ -61,7 +80,7 @@ export default function Hero() {
         <motion.div
           className={styles.rightMeta}
           initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={started ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
           transition={{ duration: 1.0, delay: 0.5, ease: smoothEase }}
         >
           <p className={styles.date}>
@@ -74,7 +93,7 @@ export default function Hero() {
         <motion.p
           className={styles.location}
           initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={started ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
           transition={{ duration: 1.0, delay: 0.6, ease: smoothEase }}
         >
           <span className={styles.metaLabel}>Working</span>
@@ -86,7 +105,7 @@ export default function Hero() {
         <motion.div
           className={styles.controls}
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          animate={started ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.9, y: 20 }}
           transition={{ duration: 0.9, delay: 0.7, ease: smoothEase }}
         >
           <motion.button

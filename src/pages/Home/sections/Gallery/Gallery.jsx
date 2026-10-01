@@ -1,4 +1,5 @@
 import InfiniteGallery from "@components/ui/InfiniteGallery/InfiniteGallery.jsx";
+import Reveal from "@components/ui/Reveal/Reveal.jsx";
 import styles from "./Gallery.module.css";
 
 /**
@@ -28,11 +29,11 @@ export default function Gallery() {
       />
 
       {/* Centered title (most important) — blends over the gallery */}
-      <div className={styles.overlay}>
+      <Reveal className={styles.overlay} direction="none" scale={0.94} duration={1.1}>
         <h2 className={styles.title}>
           <span className={styles.italic}>Our Work</span>
         </h2>
-      </div>
+      </Reveal>
 
       {/* Navigation hint */}
       <div className={styles.hint}>

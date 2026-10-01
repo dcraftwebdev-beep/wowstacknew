@@ -1,0 +1,2 @@
+import{d as e}from"./index-Cn13uAAI.js";import{t}from"./Seo-CPuY27i3.js";import{i as n,t as r}from"./schema-BSRjj3-x.js";var i=e(),a=n.blog;function o(){return(0,i.jsx)(i.Fragment,{children:(0,i.jsx)(t,{title:a.title,description:a.description,path:a.path,jsonLd:[r([{name:`Home`,path:`/`},{name:`Blog`,path:`/blog`}])]})})}export{o as default};
+//# sourceMappingURL=Blog-G1Wx5LdI.js.map

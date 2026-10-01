@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import DotMark from "@components/ui/DotMark/DotMark.jsx";
+import Reveal from "@components/ui/Reveal/Reveal.jsx";
 import { submitContact } from "@services/api/contact.js";
 import styles from "./ContactStart.module.css";
 
@@ -110,7 +111,7 @@ export default function ContactStart() {
 
   return (
     <section className={styles.section} id="start" aria-label="Start a project">
-      <div className={styles.card}>
+      <Reveal className={styles.card} direction="up" distance={40} duration={1}>
         {/* Left — dark panel with headline + contact details */}
         <div className={styles.left}>
           <h2 className={styles.leftHeading}>
@@ -214,7 +215,7 @@ export default function ContactStart() {
             )}
           </form>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

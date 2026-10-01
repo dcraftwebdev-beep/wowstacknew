@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import Reveal from "@components/ui/Reveal/Reveal.jsx";
+import Button from "@components/ui/Button/Button.jsx";
 import styles from "./ContactBanner.module.css";
 
 /** Full-width contact CTA banner. */
@@ -19,14 +18,9 @@ export default function ContactBanner() {
           Got a project in mind? Skip the runaround &mdash; talk to a real person
           who&rsquo;ll help you plan the next step.
         </p>
-        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className={styles.ctaWrap}>
-          <Link to="/contact" className={styles.cta}>
-            Let&rsquo;s talk
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </Link>
-        </motion.div>
+        <div className={styles.ctaWrap}>
+          <Button to="/contact">Let&rsquo;s talk</Button>
+        </div>
       </Reveal>
     </section>
   );

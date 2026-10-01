@@ -24,17 +24,31 @@ export default function Preloader() {
     const el = svgRef.current;
     if (!el) return;
 
+    let done = false;
     const finish = () => {
+      if (done) return;
+      done = true;
+      // Signal the rest of the page (e.g. the hero) to begin its entrance as
+      // the loader starts fading out.
+      window.__wowLoaded = true;
+      window.dispatchEvent(new Event("wow:loaded"));
       setLeaving(true);
       // remove after the fade-out transition completes
       window.setTimeout(() => setHidden(true), 700);
     };
 
+    // Safety net: never let the overlay block the page if the draw stalls
+    // (e.g. animation frames throttled in a background tab).
+    const safety = window.setTimeout(finish, 3800);
+
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
       el.querySelectorAll("path").forEach((p) => (p.style.strokeDashoffset = "0"));
       const t = window.setTimeout(finish, 600);
-      return () => window.clearTimeout(t);
+      return () => {
+        window.clearTimeout(t);
+        window.clearTimeout(safety);
+      };
     }
 
     const drawables = svg.createDrawable(el.querySelectorAll("path"));
@@ -46,7 +60,10 @@ export default function Preloader() {
       onComplete: () => window.setTimeout(finish, 450),
     });
 
-    return () => anim?.pause?.();
+    return () => {
+      window.clearTimeout(safety);
+      anim?.pause?.();
+    };
   }, []);
 
   if (hidden) return null;

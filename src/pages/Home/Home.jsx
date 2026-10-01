@@ -44,13 +44,13 @@ export default function Home() {
         jsonLd={[organizationSchema(), websiteSchema(), faqSchema(generalFaqs)]}
       />
       <Hero />
-      <ShowcaseBento />
-      <GrowPortal />
+     
+      
       <CoreIdea />
       {/* <Gallery /> */}
       <CoreServices />
       {/* <Services /> */}
-      <Power />
+      {/* <Power /> */}
       {/* <Conversion /> */}
       {/* <Showcase /> */}
       <ClientTruths />

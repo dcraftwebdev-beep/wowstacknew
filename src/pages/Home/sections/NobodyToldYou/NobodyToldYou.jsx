@@ -1,4 +1,5 @@
 import SectionIndex from "@components/ui/SectionIndex/SectionIndex.jsx";
+import Reveal, { StaggerContainer, StaggerItem } from "@components/ui/Reveal/Reveal.jsx";
 import styles from "./NobodyToldYou.module.css";
 
 const Icons = {
@@ -66,7 +67,7 @@ export default function NobodyToldYou() {
   return (
     <section className={`${styles.section} edgeFade`}>
       <div className={styles.inner}>
-        <div className={styles.head}>
+        <Reveal direction="up" className={styles.head}>
           <div className={styles.headText}>
             <SectionIndex number="04" label="Real talk" />
             <h2 className={styles.heading}>
@@ -78,11 +79,13 @@ export default function NobodyToldYou() {
             src="/images/nobody.png"
             alt="A curious white bird with question marks above its head"
           />
-        </div>
+        </Reveal>
 
-        <div className={styles.cards}>
+        <StaggerContainer className={styles.cards} stagger={0.1}>
           {cards.map((c) => (
-            <article
+            <StaggerItem
+              as="article"
+              y={36}
               className={`${styles.card} ${c.featured ? styles.featured : ""}`}
               key={c.title}
             >
@@ -93,9 +96,9 @@ export default function NobodyToldYou() {
                   <li key={b}>{b}</li>
                 ))}
               </ul>
-            </article>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

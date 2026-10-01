@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import SectionIndex from "@components/ui/SectionIndex/SectionIndex.jsx";
+import Button from "@components/ui/Button/Button.jsx";
 import Reveal, { StaggerContainer, StaggerItem } from "@components/ui/Reveal/Reveal.jsx";
 import styles from "./CoreIdea.module.css";
 
 /** Section 2 — "Still don't have a website?" CTA with a right-bleed image. */
 export default function CoreIdea() {
   return (
-    <section className={`${styles.core} edgeFade`}>
+    <section id="idea" className={`${styles.core} edgeFade`}>
       <Reveal direction="down" distance={20} duration={0.8}>
         <header className={styles.topbar}>
           <span>Wowstack</span>
@@ -43,16 +42,7 @@ export default function CoreIdea() {
 
           <StaggerItem y={24} duration={0.85}>
             <div className={styles.actions}>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Link to="/contact" className={styles.cta}>
-                  <span className={styles.ctaText}>Get your website</span>
-                  <span className={styles.ctaIcon}>
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 12h14M13 6l6 6-6 6" />
-                    </svg>
-                  </span>
-                </Link>
-              </motion.div>
+              <Button to="/contact">Get your website</Button>
             </div>
           </StaggerItem>
         </StaggerContainer>

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import FallbackImg from "@components/ui/FallbackImg/FallbackImg.jsx";
 import { StaggerContainer, StaggerItem } from "@components/ui/Reveal/Reveal.jsx";
+import Button from "@components/ui/Button/Button.jsx";
 import styles from "./Showcase.module.css";
 
 const steps = [
@@ -98,9 +99,7 @@ export default function Showcase() {
                 Start a project <ArrowUpRight />
               </Link>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Link to="/portfolio" className={styles.pillCta}>View our work</Link>
-            </motion.div>
+            <Button to="/portfolio" arrow={false}>View our work</Button>
           </div>
         </StaggerItem>
 

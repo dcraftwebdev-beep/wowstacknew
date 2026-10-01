@@ -1,17 +1,152 @@
 .btn {
+  --btn-lh: 1.1;
+  --btn-size: 3em; /* shared height of the pill and diameter of the circle */
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-6);
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: var(--fs-sm);
-  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+  gap: 0.4em; /* small gap between text pill and arrow circle */
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--neb-font-display, inherit);
+  font-weight: var(--neb-weight-semi, 600);
+  font-size: var(--neb-fs-body);
+  line-height: var(--btn-lh);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.btn:active { transform: translateY(1px); }
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+  transform: none;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--neb-accent);
+  outline-offset: 3px;
+}
 
-.primary { background: var(--color-accent); color: #fff; }
-.primary:hover { background: var(--color-accent-600); color: #fff; }
+/* ── Text pill ────────────────────────────────── */
+.textPart {
+  display: flex;
+  align-items: center;
+  height: var(--btn-size);
+  padding: 0 1.5em;
+  border-radius: var(--neb-radius-pill, 999px);
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
 
-.ghost { border: 1px solid var(--color-border); color: var(--color-text); }
-.ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+/* Per-letter roll-up text swap */
+.label {
+  display: inline-flex;
+}
+.roll {
+  display: inline-flex;
+}
+.char {
+  display: inline-block;
+  height: 1lh;
+  overflow: hidden;
+  line-height: var(--btn-lh);
+}
+.charInner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 0.028s);
+}
+.space {
+  display: inline-block;
+  white-space: pre;
+}
+.line {
+  display: block;
+  line-height: var(--btn-lh);
+}
+.btn:hover .charInner,
+.btn:focus-visible .charInner {
+  transform: translateY(-1lh);
+}
+
+/* ── Circular arrow button ────────────────────── */
+.iconPart {
+  position: relative;
+  /* exact square from the shared size → a perfect circle matching the pill */
+  width: var(--btn-size);
+  height: var(--btn-size);
+  border-radius: 50%;
+  border: 1px solid transparent;
+  overflow: hidden;
+  flex: none;
+  box-sizing: border-box;
+}
+.iconArrow {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.iconArrow svg {
+  width: 42%;
+  height: 42%;
+  display: block;
+}
+/* second arrow waits off-screen to the left */
+.iconArrow2 {
+  transform: translateX(-140%);
+}
+/* on hover: first slides out to the right, second slides in from the left */
+.btn:hover .iconArrow1,
+.btn:focus-visible .iconArrow1 {
+  transform: translateX(140%);
+}
+.btn:hover .iconArrow2,
+.btn:focus-visible .iconArrow2 {
+  transform: translateX(0);
+}
+
+/* ── Primary: solid white, dark text ──────────── */
+.primary .textPart,
+.primary .iconPart {
+  background: #fff;
+  color: #17150f;
+}
+
+/* ── Ghost: transparent with a white border ───── */
+.ghost .textPart,
+.ghost .iconPart {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.ghost:hover .textPart,
+.ghost:hover .iconPart,
+.ghost:focus-visible .textPart,
+.ghost:focus-visible .iconPart {
+  border-color: #fff;
+}
+
+/* Fallback for browsers without the `lh` unit: show the label normally. */
+@supports not (height: 1lh) {
+  .char { height: auto; }
+  .btn:hover .charInner, .btn:focus-visible .charInner { transform: none; }
+  .line:last-child { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .charInner, .iconArrow { transition: none; }
+  .btn:hover .charInner { transform: none; }
+  .iconArrow2 { transform: translate(0, 0); }
+  .iconArrow1 { display: none; }
+}

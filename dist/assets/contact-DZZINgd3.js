@@ -1,0 +1,2 @@
+import{f as e}from"./index-Cn13uAAI.js";async function t(t){let{error:n}=await e.from(`contact_messages`).insert({name:t.name,email:t.email,message:t.message});return n?{ok:!1,error:n.message}:{ok:!0}}export{t};
+//# sourceMappingURL=contact-DZZINgd3.js.map

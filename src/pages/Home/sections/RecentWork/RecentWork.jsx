@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import SectionIndex from "@components/ui/SectionIndex/SectionIndex.jsx";
 import FallbackImg from "@components/ui/FallbackImg/FallbackImg.jsx";
+import Button from "@components/ui/Button/Button.jsx";
 import Reveal, { StaggerContainer, StaggerItem } from "@components/ui/Reveal/Reveal.jsx";
 import styles from "./RecentWork.module.css";
 
@@ -57,7 +57,7 @@ function WorkCard({ img, alt }) {
 
 export default function RecentWork() {
   return (
-    <section className={`${styles.section} edgeFade`}>
+    <section id="work" className={`${styles.section} edgeFade`}>
       <div className={styles.inner}>
         <header className={styles.header}>
           <Reveal direction="up" distance={30} duration={0.9} className={styles.headLeft}>
@@ -76,14 +76,7 @@ export default function RecentWork() {
                 <br />
                 like these?
               </span>
-              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-                <Link to="/contact" className={styles.ctaBtn}>
-                  Get in touch
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </Link>
-              </motion.div>
+              <Button to="/contact">Get in touch</Button>
             </div>
           </Reveal>
         </header>

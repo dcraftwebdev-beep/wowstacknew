@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { StaggerContainer, StaggerItem } from "@components/ui/Reveal/Reveal.jsx";
 import { submitContact } from "@services/api/contact.js";
 import styles from "./ShowcaseBento.module.css";
 
@@ -28,9 +29,9 @@ export default function ShowcaseBento() {
 
   return (
     <section className={styles.section} aria-label="Wowstack showcase">
-      <div className={styles.bento}>
+      <StaggerContainer className={styles.bento} stagger={0.14} amount={0.1}>
         {/* ── Left — app showcase ─────────────── */}
-        <article className={styles.appCard}>
+        <StaggerItem as="article" y={44} className={styles.appCard}>
           <div className={styles.phone}>
             <div className={styles.phoneScreen}>
               <p className={styles.appTitle}>
@@ -55,10 +56,10 @@ export default function ShowcaseBento() {
               </div>
             </div>
           </div>
-        </article>
+        </StaggerItem>
 
         {/* ── Middle column ───────────────────── */}
-        <div className={styles.mid}>
+        <StaggerItem y={44} className={styles.mid}>
           {/* Profile card */}
           <article className={styles.profile}>
             <button className={styles.menu} type="button" aria-label="Menu">
@@ -130,10 +131,10 @@ export default function ShowcaseBento() {
               </Link>
             </div>
           </article>
-        </div>
+        </StaggerItem>
 
         {/* ── Right — story image ─────────────── */}
-        <article className={styles.story}>
+        <StaggerItem as="article" y={44} className={styles.story}>
           <img className={styles.storyImg} src="/images/about/abouthero.png" alt="Wowstack" />
           <div className={styles.storyBars} aria-hidden="true">
             <span /><span /><span />
@@ -143,8 +144,8 @@ export default function ShowcaseBento() {
             <span className={styles.storyName}>Wowstack</span>
             <span className={styles.storyTime}>now</span>
           </div>
-        </article>
-      </div>
+        </StaggerItem>
+      </StaggerContainer>
 
       <footer className={styles.foot}>
         <span>@wowstack</span>

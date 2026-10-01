@@ -1,14 +1,13 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import SectionIndex from "@components/ui/SectionIndex/SectionIndex.jsx";
 import FallbackImg from "@components/ui/FallbackImg/FallbackImg.jsx";
+import Button from "@components/ui/Button/Button.jsx";
 import Reveal, { StaggerContainer, StaggerItem } from "@components/ui/Reveal/Reveal.jsx";
 import styles from "./StandOut.module.css";
 
 /** "Stand out from the herd" section — cow image bleeds to the left edge. */
 export default function StandOut() {
   return (
-    <section className={`${styles.section} edgeFade`}>
+    <section id="why" className={`${styles.section} edgeFade`}>
       <Reveal direction="none" duration={1.2}>
         <span className={styles.watermark} aria-hidden="true">STAND OUT</span>
       </Reveal>
@@ -45,14 +44,7 @@ export default function StandOut() {
           </StaggerItem>
 
           <StaggerItem y={20} duration={0.85}>
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Link to="/contact" className={styles.cta}>
-                Get a site that stands out
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </Link>
-            </motion.div>
+            <Button to="/contact">Get a site that stands out</Button>
           </StaggerItem>
         </StaggerContainer>
       </div>

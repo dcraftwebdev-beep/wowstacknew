@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import SectionIndex from "@components/ui/SectionIndex/SectionIndex.jsx";
 import Reveal, { StaggerContainer, StaggerItem } from "@components/ui/Reveal/Reveal.jsx";
+import Button from "@components/ui/Button/Button.jsx";
 import { generalFaqs } from "@seo/aeo/faqData.js";
 import styles from "./Faq.module.css";
 
@@ -10,7 +9,7 @@ export default function Faq() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className={styles.section}>
+    <section id="faq" className={styles.section}>
       <div className={styles.inner}>
         {/* Left — heading */}
         <StaggerContainer className={styles.left} stagger={0.12} amount={0.15}>
@@ -28,14 +27,7 @@ export default function Faq() {
             </p>
           </StaggerItem>
           <StaggerItem y={20} duration={0.85}>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-              <Link to="/contact" className={styles.askBtn}>
-                Ask us anything
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </Link>
-            </motion.div>
+            <Button to="/contact">Ask us anything</Button>
           </StaggerItem>
         </StaggerContainer>
 

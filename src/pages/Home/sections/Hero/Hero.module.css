@@ -71,8 +71,11 @@
   min-height: 520px;
 }
 
-/* Phone visual entrance + gentle float (CSS so it always runs on load). */
+/* Phone visual entrance — held hidden until the hero is "started" (loader done). */
 .phoneEnter {
+  opacity: 0;
+}
+.started .phoneEnter {
   animation: phoneIn 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 @keyframes phoneIn {
@@ -80,7 +83,8 @@
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .phoneEnter { animation: none; opacity: 1; transform: none; }
+  .phoneEnter { opacity: 1; }
+  .started .phoneEnter { animation: none; opacity: 1; transform: none; }
 }
 
 .title {

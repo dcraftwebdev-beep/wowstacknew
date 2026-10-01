@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import DotMark from "@components/ui/DotMark/DotMark.jsx";
+import Button from "@components/ui/Button/Button.jsx";
 import styles from "./ServicesHero.module.css";
 
 const smoothEase = [0.16, 1, 0.3, 1];
@@ -40,11 +40,7 @@ export default function ServicesHero() {
             building, testing and optimising until your numbers move.
           </p>
 
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-            <Link to="/contact" className={styles.cta}>
-              Start your project
-            </Link>
-          </motion.div>
+          <Button to="/contact">Start your project</Button>
         </motion.div>
 
         {/* Right — feature callouts */}

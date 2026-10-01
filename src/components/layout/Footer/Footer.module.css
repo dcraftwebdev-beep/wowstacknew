@@ -1,36 +1,211 @@
 .footer {
+  background: #ffffff;
+  color: #17150f;
   border-top: 1px solid var(--color-border);
-  background: var(--color-surface);
- 
 }
 
+/* ── Walking-crowd banner (top) ───────────────── */
+.crowd {
+  position: relative;
+  width: 100%;
+  /* Fill the rest of the viewport so the footer columns + crowd fit one screen
+     (≈ non-crowd content height subtracted). Clamped so figures stay full. */
+  height: clamp(300px, calc(100vh - 430px), 460px);
+  overflow: hidden;
+  isolation: isolate;
+}
+.crowdCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Columns (reference layout) ───────────────── */
 .inner {
   max-width: var(--container-max);
   margin-inline: auto;
-  padding: var(--space-16) var(--space-6) var(--space-8);
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  padding: var(--space-16) var(--space-6) var(--space-6);
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 1.1fr 1fr;
   gap: var(--space-8);
+  align-items: start;
 }
 
-.brand { font-weight: 800; font-size: var(--fs-lg); }
-.accent { color: var(--color-accent); }
-.tagline { color: var(--color-text-muted); font-size: var(--fs-sm); }
+.statement {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 18ch;
+}
+.footLogo {
+  display: inline-flex;
+}
+.footLogo img {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+.statementText {
+  font-family: var(--neb-font, inherit);
+  font-size: clamp(1.15rem, 0.95rem + 0.6vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+.accent { color: var(--neb-accent, #e8752a); }
 
-.links { display: flex; flex-wrap: wrap; gap: var(--space-4); }
-.link { color: var(--color-text-muted); font-size: var(--fs-sm); }
-.link:hover { color: var(--color-text); }
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.colHead {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+.colLink {
+  font-size: var(--fs-sm);
+  color: rgba(23, 21, 15, 0.55);
+  width: fit-content;
+  transition: color var(--dur) var(--ease);
+}
+.colLink:hover {
+  color: #17150f;
+}
 
+/* Follow us — 1-col list of handles with icons */
+.socialGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  color: rgba(23, 21, 15, 0.7);
+  transition: color var(--dur) var(--ease);
+}
+.social:hover {
+  color: #17150f;
+}
+.socialIcon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(23, 21, 15, 0.22);
+  flex: none;
+  transition: border-color var(--dur) var(--ease);
+}
+.social:hover .socialIcon {
+  border-color: rgba(23, 21, 15, 0.5);
+}
+
+/* CTA column (right) */
+.ctaCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.cta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #17150f;
+}
+.ctaTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--neb-font-display, inherit);
+  font-size: clamp(1.15rem, 0.95rem + 0.6vw, 1.55rem);
+  font-weight: 700;
+  color: #17150f;
+}
+.ctaPrimary .ctaTitle {
+  color: var(--neb-accent, #e8752a);
+}
+/* Hover uses the brand accent, never the browser's default link colour. */
+.cta:hover .ctaTitle,
+.cta:focus-visible .ctaTitle {
+  color: var(--neb-accent, #e8752a);
+}
+.ctaSub {
+  font-size: var(--fs-sm);
+  color: rgba(23, 21, 15, 0.5);
+}
+.ctaRule {
+  height: 1px;
+  background: rgba(23, 21, 15, 0.12);
+  margin: var(--space-2) 0;
+}
+.badge {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #17150f;
+  color: #f4f2ec;
+  transition: transform var(--dur) var(--ease);
+}
+.badgeAccent {
+  background: var(--neb-accent, #e8752a);
+  color: #fff;
+}
+.cta:hover .badge {
+  transform: translate(2px, -2px);
+}
+
+/* Bottom bar */
 .bottom {
   max-width: var(--container-max);
   margin-inline: auto;
-  padding: var(--space-6);
-  border-top: 1px solid var(--color-border);
+  padding: var(--space-4) var(--space-6) var(--space-2);
+  border-top: 1px solid rgba(23, 21, 15, 0.1);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--space-2);
-  color: var(--color-text-muted);
+  color: rgba(23, 21, 15, 0.55);
   font-size: var(--fs-xs);
+}
+.bottomLink {
+  color: rgba(23, 21, 15, 0.55);
+  transition: color var(--dur) var(--ease);
+}
+.bottomLink:hover {
+  color: #17150f;
+}
+.meta {
+  letter-spacing: 0.02em;
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8) var(--space-6);
+  }
+  .statement {
+    grid-column: 1 / -1;
+    max-width: 32ch;
+  }
+}
+@media (max-width: 540px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
